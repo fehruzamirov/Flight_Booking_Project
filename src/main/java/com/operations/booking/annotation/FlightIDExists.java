@@ -1,0 +1,21 @@
+package com.operations.booking.annotation;
+
+
+import com.operations.booking.annotation.validator.FlightIDExistingValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+import java.lang.annotation.*;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
+@Constraint(validatedBy = FlightIDExistingValidator.class)
+
+public @interface FlightIDExists {
+    String message() default "{validation.messages.flight.id.exists}";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}
